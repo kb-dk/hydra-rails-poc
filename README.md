@@ -48,8 +48,16 @@ to others launch the Rails server with
 Running the project from IntelliJ
 ---
 
-TODO: Import project, running project, handling reloads.
+Follow these instructions to import the project:
 
+<https://confluence.jetbrains.com/display/RUBYDEV/Opening+Rails+projects+in+IntelliJ+IDEA>
+
+It is important to have the Rails facet detected, and a Ruby SDK assigned.
+
+Run -> Edit configuration.  Add a Rails type configuration for the project.
+
+The Run and Debug buttons should now be available.  In Debug mode
+the Console contains clickable stack traces.
 
 
 Running the project from Eclipse
