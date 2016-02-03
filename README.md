@@ -10,6 +10,7 @@ You need:
 * Ruby 1.9.3 or newer.
 * A working installation of SQLite3.
 * Hydra-aware Fedora + Solr running in a container.
+* Redis server running on localhost port 6379 (standard port)
 
 
 For Ubuntu 15.10, get coffee and use
@@ -24,7 +25,31 @@ dependencies are met:
     cd project1
     bundle install # may ask for root password 
 
+    rails generate curation_concerns:install
+    rake db:migrate
 
+Now the projects have the needed default configs, some of which needs moification to be able to talk to the Fedora and Solr backends.
+The configurations files which need editing is:
+    config/fedora.yml
+    config/solr.yml
+    config/blacklight.yml
+
+If you're using the internal 'SB' fedora + solr package update as follows
+For fedora.yml update the 'development' section as follows:
+    Set 'password' to: fedoraAdminPass
+    Set 'url' to: http://localhost:8080/fcrepo/rest
+
+For solr.yml update the 'development' section as follows:
+    Set 'url' to: http://localhost:8080/solr/#/production
+
+For blacklight.yml update the 'development' section as follows:
+    Set 'url' to: http://localhost:8080/solr/#/production
+
+Now a new type of objects should be created (otherwise searching will fail, as there's no object types).
+Creating a new type 'avis' run the following (the fedora and solr instances needs to be running):
+    rails generate curation_concerns:work avis
+
+Now the you should be ready to start the application, see below.
 
 Running the project from the command line:
 ---
