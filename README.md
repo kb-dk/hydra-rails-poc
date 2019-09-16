@@ -1,3 +1,5 @@
+Important: No further work will go into this repository and it has been left here as documentation. 
+
 This is the proof-of-concept Ruby on Rails project for Hydra.
 
 
